@@ -1,0 +1,37 @@
+version: "1"
+
+package:
+  id: io.github.aplugedit
+  name: aplugedit
+  version: 0.0.0.1
+  kind: app
+  description: |
+    APlugEdit is a graphical schematic editor for ALSA .asoundrc file.
+
+command:
+  - /opt/apps/io.github.aplugedit/files/bin/aplugedit
+
+base: org.deepin.foundation/23.0.0
+runtime: org.deepin.Runtime/23.0.1
+
+sources:
+  - kind: git
+    url: https://github.com/kernel1024/aplugedit.git
+    version: master
+    commit: c22282afa9e4c85e9da271a78d268da02970a032
+  - kind: file
+    url: http://ftp.cn.debian.org/debian/pool/main/t/tap-plugins/tap-plugins_1.0.0-1_amd64.deb
+    digest: ce9b8e672e9b346b606c223572ddf13b3ae616825241139d5fe9dbb5aa777e22
+  - kind: file
+    url: http://ftp.cn.debian.org/debian/pool/main/o/ocaml-ladspa/libladspa-ocaml-dev_0.1.4-1.1+b2_amd64.deb
+    digest: 59f8a2f1843c5004bb2ed696a072b3bff43d0bf316bc2efcd04ef07f293d41f1
+  - kind: file
+    url: http://ftp.cn.debian.org/debian/pool/main/l/ladspa-sdk/ladspa-sdk_1.13-3_amd64.deb
+    digest: fe9f42ebbed36b91142e65f6f171350563c44f88426be06a37fe728a8f5a4aaa
+build: |
+  bash ./install_dep linglong/sources $PREFIX
+  cd /project/linglong/sources/aplugedit.git
+  git apply ../../../0001-install.patch
+  qmake -makefile PREFIX=${PREFIX} LIB_INSTALL_DIR=${PREFIX}/lib/${TRIPLET}
+  make
+  make install
