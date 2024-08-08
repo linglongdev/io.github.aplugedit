@@ -1,0 +1,66 @@
+From 48ada07f21626f865f391cce36bd778acb4385a5 Mon Sep 17 00:00:00 2001
+From: wjyrich <1071633242@qq.com>
+Date: Wed, 7 Aug 2024 18:50:58 +0800
+Subject: [PATCH] install
+
+---
+ aplugedit.pro | 21 +++++++++++----------
+ 1 file changed, 11 insertions(+), 10 deletions(-)
+
+diff --git a/aplugedit.pro b/aplugedit.pro
+index c1681a7..375fbef 100644
+--- a/aplugedit.pro
++++ b/aplugedit.pro
+@@ -1,5 +1,6 @@
+ TEMPLATE += app
+ QT += widgets network
++INCLUDEPATH += $${PREFIX}/include   
+ HEADERS       = includes/cpbase.h \
+                 includes/equalizerdialog.h \
+                 includes/alsabackend.h \
+@@ -146,32 +147,32 @@ OTHER_FILES += \
+ isEmpty(INSTALL_PREFIX):INSTALL_PREFIX = /usr
+ TARGET       = aplugedit
+ TARGET.files = aplugedit
+-TARGET.path  = $$INSTALL_PREFIX/bin
++TARGET.path  = $$PREFIX/bin
+ INSTALLS    += TARGET desktop icon16 icon24 icon32 icon48 icon64 icon128 icon256 icon512
+ 
+ desktop.files   = aplugedit.desktop
+-desktop.path    = $$INSTALL_PREFIX/share/applications
++desktop.path    = $$PREFIX/share/applications
+ 
+ icon16.files    = images/appicon/16/aplugedit.png
+-icon16.path     = $$INSTALL_PREFIX/share/icons/hicolor/16x16/apps
++icon16.path     = $$PREFIX/share/icons/hicolor/16x16/apps
+ 
+ icon24.files    = images/appicon/24/aplugedit.png
+-icon24.path     = $$INSTALL_PREFIX/share/icons/hicolor/24x24/apps
++icon24.path     = $$PREFIX/share/icons/hicolor/24x24/apps
+ 
+ icon32.files    = images/appicon/32/aplugedit.png
+-icon32.path     = $$INSTALL_PREFIX/share/icons/hicolor/32x32/apps
++icon32.path     = $$PREFIX/share/icons/hicolor/32x32/apps
+ 
+ icon48.files    = images/appicon/48/aplugedit.png
+-icon48.path     = $$INSTALL_PREFIX/share/icons/hicolor/48x48/apps
++icon48.path     = $$PREFIX/share/icons/hicolor/48x48/apps
+ 
+ icon64.files    = images/appicon/64/aplugedit.png
+-icon64.path     = $$INSTALL_PREFIX/share/icons/hicolor/64x64/apps
++icon64.path     = $$PREFIX/share/icons/hicolor/64x64/apps
+ 
+ icon128.files   = images/appicon/128/aplugedit.png
+-icon128.path    = $$INSTALL_PREFIX/share/icons/hicolor/128x128/apps
++icon128.path    = $$PREFIX/share/icons/hicolor/128x128/apps
+ 
+ icon256.files   = images/appicon/256/aplugedit.png
+-icon256.path    = $$INSTALL_PREFIX/share/icons/hicolor/256x256/apps
++icon256.path    = $$PREFIX/share/icons/hicolor/256x256/apps
+ 
+ icon512.files   = images/appicon/512/aplugedit.png
+-icon512.path    = $$INSTALL_PREFIX/share/icons/hicolor/512x512/apps
++icon512.path    = $$PREFIX/share/icons/hicolor/512x512/apps
+-- 
+2.43.4
+
